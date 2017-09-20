@@ -1,7 +1,20 @@
+//引用html-webpack-plugin插件
+var htmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-	entry:'./src/script/main.js',		//指定入口文件
+	// context:,
+	// entry:['./src/script/main.js','./src/script/a.js'],		//指定入口文件
+	entry:{
+		main:'./src/script/main.js',
+		a:'./src/script/a.js'
+	},
 	output:{
-		// path:'./dist/js',				//指定打包文件的存放位置
-		filename:'bundle.js'			//指定打包文件的文件名
-	}
+		path:'./dist',				//指定打包文件的存放位置
+		filename:'js/[name]-[chunkhash].js'			//指定打包文件的文件名
+	},
+	plugins:[
+		new htmlWebpackPlugin({
+			template:'index.html'
+		})
+	]
 }
