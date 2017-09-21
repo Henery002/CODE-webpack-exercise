@@ -2,11 +2,25 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Webpack is Awesome!</title>
+    <!-- <title>Webpack is Awesome!</title> -->
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <script type="text/javascript" src='<%= htmlWebpackPlugin.files.chunks.a.entry %>'></script>
   </head>
   <body>
+  	<!-- 用于测试能否被删除的注释 -->
+  	<div><%= htmlWebpackPlugin.options.date %></div>
+
+  	<!-- 遍历htmlWebpackPlugin对象 -->
+  	<p>files</p>
+  	<% for(var key in htmlWebpackPlugin.files){ %>
+  		<%= key %> : <%= JSON.stringify(htmlWebpackPlugin.files[key]) %>
+  	<% } %>
+  	<p>options</p>
+  	<% for(var key in htmlWebpackPlugin.options){ %>
+  		<%= key %> : <%= JSON.stringify(htmlWebpackPlugin.options[key]) %>
+  	<% } %>
+
   	<!-- script标签是自动打包进来的，无需手动输入 -->
-  	<script type="text/javascript" src="main-59da88c5106f2634c784.js"></script>
-  	<script type="text/javascript" src="a-d37cb4afc0a0f447188a.js"></script>
+  	<script type="text/javascript" src='<%= htmlWebpackPlugin.files.chunks.main.entry %>'></script>
   </body>
 </html>
